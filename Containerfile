@@ -49,9 +49,8 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 # akmod for EVDI driver
-COPY --from=ghcr.io/ublue-os/akmods:main-40 /rpms/ /tmp/rpms
+COPY --from=ghcr.io/ublue-os/akmods-extra:main-41 /rpms/ /tmp/rpms
 RUN find /tmp/rpms
-RUN rpm-ostree install /tmp/rpms/ublue-os/ublue-os-akmods*.rpm
 RUN rpm-ostree install /tmp/rpms/kmods/kmod-evdi*.rpm
 
 COPY build.sh /tmp/build.sh
