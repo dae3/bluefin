@@ -49,10 +49,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 # akmod for EVDI driver
-COPY --from=ghcr.io/ublue-os/akmods:main-41 /rpms/ /tmp/rpms
-RUN find /tmp/rpms
-RUN rpm-ostree install /tmp/rpms/kmods/evdi-kmod-common*.rpm
-
+ADD https://negativo17.org/repos/fedora-multimedia.repo  /etc/yum.repos.d/negativo17-fedora-multimedia.repo
 COPY --from=ghcr.io/ublue-os/akmods-extra:main-41 /rpms/ /tmp/rpms
 RUN find /tmp/rpms
 RUN rpm-ostree install /tmp/rpms/kmods/kmod-evdi*.rpm
