@@ -50,7 +50,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 
 # akmod for EVDI driver
 ADD https://negativo17.org/repos/fedora-multimedia.repo  /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-COPY --from=ghcr.io/ublue-os/akmods-extra:main-41-6.11.8-300.fc41.x86_64 /rpms/ /tmp/rpms
+COPY --from=ghcr.io/ublue-os/akmods-extra:main-41-6.12.9-200.fc41.x86_64 /rpms/ /tmp/rpms
 RUN find /tmp/rpms
 RUN rpm-ostree install /tmp/rpms/kmods/kmod-evdi*.rpm
 
